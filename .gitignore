@@ -3,6 +3,7 @@
 *.so
 *.egg
 *.egg-info
+*.md
 dist
 build
 
