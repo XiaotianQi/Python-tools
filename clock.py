@@ -2,7 +2,7 @@ import time
 import functools
 
 def clock(func):
-    @functools.wraps
+    @functools.wraps(func)
     def clocked(*args, **kwargs):
         t0 = time.time()
         result = func(*args, **kwargs)
@@ -18,3 +18,11 @@ def clock(func):
         print('[%0.8fs] %s(%s) --> %r' % (t1, name, arg_str, result))
         return result
     return clocked
+
+if __name__ == '__main__':
+    @clock
+    def fib(n):
+        if n < 2:
+            return n
+        return fib(n-2) + fib(n-1)
+    fib(6)
