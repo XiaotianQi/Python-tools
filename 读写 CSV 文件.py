@@ -1,0 +1,30 @@
+# _*_coding:utf-8_*_
+import csv
+
+def writeCsvFile(path, data, header=None, mode='w'):
+    try:
+        with open(path, mode, newline='') as csv_file:
+            writer = csv.writer(csv_file, dialect='excel')
+
+            if header is not None:
+                writer.writerow(header)
+
+            for row in data:
+                writer.writerow(row)
+
+            print("Successful! Path: %s." % path)
+    except Exception as e:
+        print("Error! Path: %s, Case: %s" % (path, e))
+
+
+if __name__ == '__main__':
+    header = ['Symbol','Price','Date','Time','Change','Volume']
+    data = [
+        ["AA", 39.48, "6/11/2007", "9:36am", -0.18,181800],
+        ["AIG", 71.38, "6/11/2007", "9:36am", -0.15,195500],
+        ["AXP", 62.58, "6/11/2007", "9:36am", -0.46,935000],
+        ["BA", 98.31, "6/11/2007", "9:36am", +0.12,104800],
+        ["C", 53.08, "6/11/2007", "9:36am", -0.25,360900],
+        ["CAT", 78.29, "6/11/2007", "9:36am", -0.23,225400]
+    ]
+    writeCsvFile('testCSV.csv', data, header)
