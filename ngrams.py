@@ -4,7 +4,6 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re
 import string
-from collections import OrderedDict
 
 def cleanInput(input):
     input = re.sub(r'\n+', ' ', input)
